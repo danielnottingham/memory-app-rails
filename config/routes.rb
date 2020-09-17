@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'users/new'
-  post 'users/new', action: :create, controller: 'users'
-  get 'users', action: :index, controller: 'users'
-  delete 'users/:id', action: :destroy, controller: 'users'
-  get 'users/:id/edit', action: :edit, controller: 'users'
-  patch 'users/:id', action: :update, controller: 'users'
-  put 'users/:id', action: :update, controller: 'users'
+  get 'items/new'
+  post 'items/new', action: :create, controller: 'items'
+  get 'items', action: :index, controller: 'items'
+  delete 'items/:id', action: :destroy, controller: 'items'
+  get 'items/:id/edit', action: :edit, controller: 'items'
+  patch 'items/:id', action: :update, controller: 'items'
+  put 'items/:id', action: :update, controller: 'items'
 
-  root 'users#index'
+  root 'items#index'
 end

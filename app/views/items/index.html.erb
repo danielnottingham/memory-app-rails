@@ -1,0 +1,29 @@
+
+<%= form_tag(items_path, :method => :get) do %>
+  <p>
+    <%= text_field_tag :search_by_key, params[:search_by_key] %>
+    <%= submit_tag 'Search' %>
+  </p>
+<% end %>
+
+<table>
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @items.each do |item| %>
+            <tr>
+                <td><%= item.key %></td>
+                <td><%= item.value %></td>
+                <td><%= link_to 'Edit', "/items/#{item.id}/edit" %></td>
+                <td><%= link_to 'Delete', "/items/#{item.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Add a new item!', items_new_path, class: 'btn-click-here' %>

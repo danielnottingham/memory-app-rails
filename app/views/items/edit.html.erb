@@ -1,0 +1,16 @@
+<h1>Edit Form</h1>
+
+<%= form_with(url: "/items/#{@item.id}", method: "patch") do %>
+    <div class="field">
+        <%= label_tag(:key) %>
+        <%= text_field_tag(:key) %>
+    </div>
+    <div class="field">
+        <%= label_tag(:value) %>
+        <%= text_field_tag(:value) %>
+    </div>
+    <div class="actions">
+        <%= submit_tag('Update') %>
+    </div>
+<% end %>
+<%= link_to 'Back', '/items' %>

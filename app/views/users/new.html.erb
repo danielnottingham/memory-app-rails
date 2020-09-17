@@ -3,8 +3,8 @@
 <%= form_with(local: true) do |form| %>
     <% if @user.errors.any? %>
         <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+            <% @user.errors.full_messages.each do |error_message| %>
+                <li><%= error_message %></li>
             <% end %>
         </ul>
     <% end %>

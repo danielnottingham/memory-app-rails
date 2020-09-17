@@ -27,8 +27,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to action: 'index'
+    if @user.update(user_params)
+      redirect_to action: 'index'
+    else
+      render :edit
+    end
   end
 
   def destroy

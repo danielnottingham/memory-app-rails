@@ -6,6 +6,7 @@
 
 # Checklist 
 - [ ] all conversation resolved?
+- [ ] Squashed commit with issue number
 - [ ] Unit Tests
 - [ ] Test coverage screenshot
 - [ ] Deploy link

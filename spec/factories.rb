@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :user do
-    name { 'Dan' }
-    phone { '996745953' }
+  factory :item do
+    key { 'Dan' }
+    value { 'Nottingham' }
   end
 end

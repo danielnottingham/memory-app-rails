@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  let(:user) { User.create(:user) }
 
   describe 'not empty' do
     it { is_expected.to validate_presence_of(:key) }

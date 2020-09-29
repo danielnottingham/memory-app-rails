@@ -16,13 +16,14 @@ RSpec.describe User, type: :model do
 
   describe 'valid email typed' do
     it 'should be valid email typed like ' do
-      email = User.new(email: 'valid@email.com')
-      expect(email).to be_valid
+      user1 = User.new(email: 'valid@email.com')
+      expect(user1).to be_valid
     end
 
     it 'should not be valid email typed like ' do
-      email2 = User.new(email: 'invalid@invalid@.com')
-      expect(email2).to_not be_valid
+      user2 = User.new(email: 'invalid@invalid@.com')
+      expect(user2).to_not be_valid
+      expect(user2.errors[:email]).to include('is invalid')
     end
   end
 end

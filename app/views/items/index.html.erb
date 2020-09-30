@@ -11,6 +11,7 @@
         <tr>
             <th>Key</th>
             <th>Value</th>
+            <th>Visible</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -19,6 +20,7 @@
             <tr>
                 <td><%= item.key %></td>
                 <td><%= item.value %></td>
+                <td><%= item.visible %></td>
                 <td><%= link_to 'Edit', "/items/#{item.id}/edit" %></td>
                 <td><%= link_to 'Delete', "/items/#{item.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

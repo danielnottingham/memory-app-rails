@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-    redirect_to action: 'index'
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -46,6 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.permit(:key, :value, :visible)
+    params.require(:item).permit(:key, :value, :visible)
   end
 end

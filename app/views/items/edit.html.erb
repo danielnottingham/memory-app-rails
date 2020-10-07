@@ -1,20 +1,20 @@
 <h1>Edit Form</h1>
 
-<%= form_with(url: "/items/#{@item.id}", method: "patch") do %>
+<%= form_with(model: @item, url: "/items/#{@item.id}", method: "patch", local: true) do |f| %>
     <div class="field">
-        <%= label_tag(:key) %>
-        <%= text_field_tag(:key) %>
+        <%= f.label :key %>
+        <%= f.text_field :key %>
     </div>
     <div class="field">
-        <%= label_tag(:value) %>
-        <%= text_field_tag(:value) %>
+        <%= f.label :value %>
+        <%= f.text_field :value %>
     </div>
     <div class="field">
-        <%= label_tag(:visible ) %>
-        <%= check_box_tag(:visible ) %>
+        <%= f.label :visible %>
+        <%= f.check_box :visible %>
     </div>
     <div class="actions">
-        <%= submit_tag('Update') %>
+        <%= f.submit %>
     </div>
 <% end %>
 <%= link_to 'Back', '/items' %>

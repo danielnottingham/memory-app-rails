@@ -5,7 +5,7 @@ RSpec.describe ItemsController, type: :controller do
   context 'GET #new' do
     it 'should success render new' do
       get :new
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(201)
       expect(assigns(:item)).to be_a(Item)
     end
   end

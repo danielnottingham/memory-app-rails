@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:destroy, :edit, :update]
+  before_action :set_item, only: %i[destroy edit update]
 
   def index
     @items = Item.all
-    if params[:search_by_key]
-      @items = Item.search_by_key(params[:search_by_key])
-    else
-      @items = Item.all
-    end
+    @items = if params[:search_by_key]
+               Item.search_by_key(params[:search_by_key])
+             else
+               Item.all
+             end
   end
 
   def new
@@ -23,8 +23,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @item.update(item_params)

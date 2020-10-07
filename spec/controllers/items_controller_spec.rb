@@ -12,14 +12,23 @@ RSpec.describe ItemsController, type: :controller do
 
   context 'POST #create' do
     item_attributes = FactoryBot.attributes_for(:item)
+    let!(:params) do
+      {
+        'item' => item_attributes
+      }
+    end
+    let!(:params2) do
+      {
+        'item' => { key: 'Sara', value: nil }
+      }
+    end
     it 'create a new item' do
-      expect { post :create, params: item_attributes }.to change(Item, :count).from(0).to(1)
+      expect { post :create, params: params }.to change(Item, :count).from(0).to(1)
       expect(response).to redirect_to(action: :index)
     end
 
     it 'not create a new item' do
-      item_attributes = { key: 'Sara' }
-      expect { post :create, params: item_attributes }.to_not change(Item, :count)
+      expect { post :create, params: params2 }.to_not change(Item, :count)
       expect(assigns(:item).errors.full_messages).to eq(["Value can't be blank", 'Value is invalid'])
       expect(response).to render_template(:new)
     end
@@ -37,19 +46,28 @@ RSpec.describe ItemsController, type: :controller do
 
   context 'PUT #update' do
     let!(:item) { create(:item) }
+    let!(:params) do
+      {
+        'item' => { key: 'Edimo', value: 'Sousa', visible: true },
+        'id' => item.id
+      }
+    end
+    let!(:params2) do
+      {
+        'item' => { key: nil, value: 'Sousa', visible: true },
+        'id' => item.id
+      }
+    end
 
     it 'should update item info' do
-      params = { key: 'Edimo' }
-
-      put :update, params: { id: item.id, key: 'Edimo' }
+      put :update, params: params
       item.reload
-      expect(item.key).to eq(params[:key])
+      expect(item.key).to eq('Edimo')
       expect(response).to redirect_to(action: :index)
     end
 
     it 'should not update item info' do
-      params = { key: nil }
-      put :update, params: { id: item.id, key: nil }
+      put :update, params: params2
       item.reload
       expect(item.key).to_not be_nil
       expect(assigns(:item).errors.full_messages).to eq(["Key can't be blank", 'Key is invalid'])

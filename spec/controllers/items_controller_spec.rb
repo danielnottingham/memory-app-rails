@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ItemsController, type: :controller do
-
   context 'GET #new' do
     it 'should success render new' do
       get :new
@@ -104,43 +103,43 @@ RSpec.describe ItemsController, type: :controller do
   end
 
   context 'finds a searched item by key' do
-    #prepare
+    # prepare
     let!(:item) { create(:item, key: 'Daniel') }
     let!(:item1) { create(:item, key: 'Edimo') }
     let!(:item2) { create(:item, key: 'Edmilson') }
 
     it 'finds by key Ed' do
-      #action
+      # action
       get :index, params: { search_by_key: 'Ed' }
-      #assert
+      # assert
       assigns(:items).should eq([item1, item2])
     end
 
     it 'finds by key with da' do
-      #action
+      # action
       get :index, params: { search_by_key: 'Da' }
-      #assert
+      # assert
       assigns(:items).should eq([item])
     end
 
     it 'finds by key with iel' do
-      #action
+      # action
       get :index, params: { search_by_key: 'iel' }
-      #assert
+      # assert
       assigns(:items).should eq([item])
     end
 
     it 'when does not find any items' do
-      #action
+      # action
       get :index, params: { search_by_key: 'f' }
-      #assert
+      # assert
       expect(nil).to be_nil
     end
 
     it 'when search is empty' do
-      #action
+      # action
       get :index, params: { search_by_key: ' ' }
-      #assert
+      # assert
       expect(assigns(:items)).to be_empty
     end
   end

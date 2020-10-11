@@ -1,12 +1,10 @@
 Feature: Creating a new item
-  User possibility
-  Register in the system
-  To be able to manage your tasks
   
   Scenario: Creating a new item
-    Given I visit the new item page
-    And I fill in Key with "telefone"
-    And I fill in Value with "numero"
+    Given I visit the url "/items/new"
+    And The current url should be "/items/new"
+    And I fill in field "#item_key" with "name"
+    And I fill in field "#item_value" with "nottingham"
     And click on the "Add" button
-    Then the item with key "telefone" exists
-    And I should be sent to the page "/items"
+    Then the item with key "name" exists
+    And The current url should be "/items"

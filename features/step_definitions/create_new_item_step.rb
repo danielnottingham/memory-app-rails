@@ -1,29 +1,21 @@
 
-  Given('I visit the new item page') do
-    visit '/items/new'
+  Given('I visit the url {string}') do |path|
+    visit path
   end
 
-  Given('I fill in Key with {string}') do |value|
-    find("#item_key").set value
-    #find('#item_value').set value
-  end
-
-  Given('I fill in Value with {string}') do |value|
-    find("#item_value").set value
-    #find('#item_value').set value
+  Given('I fill in field {string} with {string}') do |element_id, value|
+    find(element_id).set value
   end
 
   Given('click on the {string} button') do |add|
-    #page.find('input[value=Add]').click
-    click_button 'Add'
+    click_button add
   end
 
   Then('the item with key {string} exists') do |key|
     item = Item.find_by(key: key)
-    binding.pry
     expect(item).to_not be_nil
   end
 
-  Then('I should be sent to the page {string}') do |string|
-    visit '/items'
+  Then('The current url should be {string}') do |path|
+    expect(page).to have_current_path(path)
   end

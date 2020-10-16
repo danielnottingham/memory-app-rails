@@ -1,4 +1,4 @@
-Feature: Creating a new item
+Feature: Creating a new item with valid values
   
   Scenario: Creating a new item
     Given I visit the url "/items/new"

@@ -55,7 +55,6 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'cucumber-rails', require: false
   gem 'capybara', '>= 2.15'
-  # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false, group: :test

@@ -19,3 +19,4 @@
   Then('The current url should be {string}') do |path|
     expect(page).to have_current_path(path)
   end
+  
